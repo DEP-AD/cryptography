@@ -38,7 +38,7 @@ public class EncryptionController {
         String cipherText="";
         for (int i = 0; i < reversedText.length(); i++) {
             int code  = reversedText.charAt(i);
-            code +=10;
+            code +=10000;
             char newChar=(char) code;
             cipherText += newChar;
         }
