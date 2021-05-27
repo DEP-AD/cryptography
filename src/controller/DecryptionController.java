@@ -29,8 +29,11 @@ public class DecryptionController {
             return;
         }
 
-
-        txtText.setText(Crypto.decrypt(cipherText,key));
-
+        try{
+            txtText.setText(Crypto.decrypt(cipherText,key));
+        }catch(RuntimeException exception){
+            new Alert(Alert.AlertType.ERROR,exception.getMessage(),ButtonType.OK).show();
+            txtKey.requestFocus();
+        }
     }
 }
