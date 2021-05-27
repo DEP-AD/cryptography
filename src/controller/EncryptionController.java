@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import lk.ijse.crypto.Crypto;
+
 
 public class EncryptionController {
 
@@ -26,22 +28,6 @@ public class EncryptionController {
             txtKey.requestFocus();
             return;
         }
-
-        text += key;
-
-        String reversedText="";
-        for (int i = text.length()-1; i >= 0; i--) {
-            reversedText += text.charAt(i);
-        }
-        System.out.println(reversedText);
-
-        String cipherText="";
-        for (int i = 0; i < reversedText.length(); i++) {
-            int code  = reversedText.charAt(i);
-            code +=10000;
-            char newChar=(char) code;
-            cipherText += newChar;
-        }
-        txtCipher.setText(cipherText);
+        txtCipher.setText(Crypto.encrypt(text, key));
     }
 }

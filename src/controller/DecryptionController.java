@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import lk.ijse.crypto.Crypto;
+
 
 public class DecryptionController {
 
@@ -28,22 +30,7 @@ public class DecryptionController {
         }
 
 
-
-        String text = "";
-        for (int i = 0; i < cipherText.length(); i++) {
-            int code  = cipherText.charAt(i);
-            code -=10000;
-            char orgChar=(char) code;
-            text += orgChar;
-        }
-
-        String originalText="";
-        for (int i = text.length()-1; i >= 0; i--) {
-            originalText += text.charAt(i);
-        }
-
-        originalText = originalText.substring(0,originalText.length() - key.length());
-        txtText.setText(originalText);
+        txtText.setText(Crypto.decrypt(cipherText,key));
 
     }
 }
